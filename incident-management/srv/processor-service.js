@@ -1,3 +1,4 @@
+//js file
 const cds = require('@sap/cds')
 
 class ProcessorService extends cds.ApplicationService {
