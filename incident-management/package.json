@@ -1,0 +1,39 @@
+{
+  "name": "incident-management",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "express": "^4",
+    "hdb": "^0.19.8"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/hdi-deploy": "4.9.4",
+    "@sap/ux-specification": "^1.120.8",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-incidentmngmtfioriapp": "cds watch --open incidentmngmtfioriapp/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana"
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/incidentmngmtfioriapp"
+  ]
+}
