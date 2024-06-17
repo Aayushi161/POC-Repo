@@ -79,8 +79,7 @@ modules:
       commands:
         - npm install
         - npm run build:cf
-      supported-platforms:
-        []
+      supported-platforms: []
 resources:
   - name: incident-management-db
     type: com.sap.xs.hdi-container
@@ -134,5 +133,6 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
+        - npm install
         - npm ci
         - npx cds build --production
