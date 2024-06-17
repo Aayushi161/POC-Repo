@@ -1,0 +1,9 @@
+VIEW ProcessorService_Urgency AS SELECT
+  Urgency_0.name,
+  Urgency_0.descr,
+  Urgency_0.code
+FROM sap_capire_incidents_Urgency AS Urgency_0
+WITH ASSOCIATIONS (
+  MANY TO MANY JOIN ProcessorService_Urgency_texts AS texts ON (texts.code = code),
+  MANY TO ONE JOIN ProcessorService_Urgency_texts AS localized ON (localized.code = code AND localized.locale = SESSION_CONTEXT('LOCALE'))
+)

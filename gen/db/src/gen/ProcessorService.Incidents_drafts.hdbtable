@@ -1,0 +1,22 @@
+COLUMN TABLE ProcessorService_Incidents_drafts (
+  ID NVARCHAR(36) NOT NULL,
+  createdAt TIMESTAMP NULL,
+  createdBy NVARCHAR(255) NULL,
+  modifiedAt TIMESTAMP NULL,
+  modifiedBy NVARCHAR(255) NULL,
+  customer_ID NVARCHAR(5000) NULL,
+  title NVARCHAR(5000) NULL,
+  urgency_code NVARCHAR(5000) NULL DEFAULT 'M',
+  status_code NVARCHAR(5000) NULL DEFAULT 'N',
+  IsActiveEntity BOOLEAN,
+  HasActiveEntity BOOLEAN,
+  HasDraftEntity BOOLEAN,
+  DraftAdministrativeData_DraftUUID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(ID)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN ProcessorService_Customers AS customer ON (customer.ID = customer_ID),
+  MANY TO ONE JOIN ProcessorService_Urgency AS urgency ON (urgency.code = urgency_code),
+  MANY TO ONE JOIN ProcessorService_Status AS status ON (status.code = status_code),
+  MANY TO MANY JOIN ProcessorService_Incidents_conversation_drafts AS conversation ON (conversation.up__ID = ID),
+  MANY TO ONE JOIN ProcessorService_DraftAdministrativeData AS DraftAdministrativeData ON (DraftAdministrativeData.DraftUUID = DraftAdministrativeData_DraftUUID)
+)
