@@ -1,0 +1,10 @@
+VIEW localized_ProcessorService_Status AS SELECT
+  Status_0.name,
+  Status_0.descr,
+  Status_0.code,
+  Status_0.criticality
+FROM localized_sap_capire_incidents_Status AS Status_0
+WITH ASSOCIATIONS (
+  MANY TO MANY JOIN ProcessorService_Status_texts AS texts ON (texts.code = code),
+  MANY TO ONE JOIN ProcessorService_Status_texts AS localized ON (localized.code = code AND localized.locale = SESSION_CONTEXT('LOCALE'))
+)

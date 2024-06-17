@@ -1,0 +1,14 @@
+COLUMN TABLE sap_capire_incidents_Customers (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  ID NVARCHAR(5000) NOT NULL,
+  firstName NVARCHAR(5000),
+  lastName NVARCHAR(5000),
+  email NVARCHAR(5000),
+  phone NVARCHAR(5000),
+  PRIMARY KEY(ID)
+) WITH ASSOCIATIONS (
+  MANY TO MANY JOIN sap_capire_incidents_Incidents AS incidents ON (incidents.customer_ID = ID)
+)
