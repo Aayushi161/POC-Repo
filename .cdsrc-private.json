@@ -5,10 +5,10 @@
         "binding": {
           "type": "cf",
           "apiEndpoint": "https://api.cf.us10-001.hana.ondemand.com",
-          "org": "29e0c004trial",
+          "org": "95d16320trial",
           "space": "dev",
-          "instance": "incidentmngmt",
-          "key": "incidentmngmt-key",
+          "instance": "incidentmngemntdb",
+          "key": "incidentmngemntdb-key",
           "resolved": false
         },
         "kind": "hana",

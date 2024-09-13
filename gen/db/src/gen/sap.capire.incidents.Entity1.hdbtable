@@ -1,0 +1,5 @@
+COLUMN TABLE sap_capire_incidents_Entity1 (
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(100),
+  PRIMARY KEY(ID)
+)
